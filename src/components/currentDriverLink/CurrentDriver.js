@@ -44,7 +44,7 @@ class CurrentDriver extends Component {
 				<div className="ui segment">
 					<h1 className="legs-title">Driver Status</h1>
 					<button className="ui button" onClick={this.findLegHandler}>
-						Active Route
+						Show Route
 					</button>
 					<div className="data-container">
 						<svg
