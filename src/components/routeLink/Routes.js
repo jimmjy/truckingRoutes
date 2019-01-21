@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StopVisualization from '../stops visualization/StopVisualization';
 import { connect } from 'react-redux';
+import { fetchStops } from '../../actions/index';
 
 import './Routes.scss';
 
@@ -39,4 +40,7 @@ const mapStateToProps = state => ({
 	stops: state.stops,
 });
 
-export default connect(mapStateToProps)(Routes);
+export default connect(
+	mapStateToProps,
+	{ fetchStops },
+)(Routes);

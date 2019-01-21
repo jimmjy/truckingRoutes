@@ -21,15 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //enable routes access
 app.use(requests);
-app.get('/', (req, res) => {
-	res.send('<h1>Node</h1>');
-});
 
-//host server and websocket
-const server = app.listen(port, () => {
+//host server
+app.listen(port, () => {
 	console.log(`listening on port ${port}....`);
-});
-const io = require('socket.io')(server);
-io.on('connection', () => {
-	console.log('client connected');
 });
