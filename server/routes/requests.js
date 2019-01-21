@@ -21,16 +21,13 @@ router.get('/bonus', (req, res) => {
 	res.status(200).send(data.bonusDriver);
 });
 
+//parse sent data from react, push it to const "fake-database" send back response for state
 router.put('/driver', (req, res) => {
 	const driver = data.driverLocation;
 	console.log();
 	driver[0].activeLegID = JSON.parse(req.body.body).leg;
 	driver[0].legProgress = JSON.parse(req.body.body).progress;
-	// if (!driver) {
-	// 	// 404 - resource not found
-	// 	res.status(404).send('not found');
-	// 	return;
-	// }
+
 	console.log(driver);
 	res.send(data.driver);
 });
