@@ -7,6 +7,7 @@ import Header from './header/Header';
 
 import './App.scss';
 import CurrentDriver from './currentDriverLink/CurrentDriver';
+import EditDriver from '../components/EditDriver/EditDriver';
 
 class App extends Component {
 	componentDidMount() {
@@ -22,6 +23,7 @@ class App extends Component {
 						<Header />
 						<Route path="/" exact component={Routes} />
 						<Route path="/current" component={CurrentDriver} />
+						<Route path="/edit" component={EditDriver} />
 					</div>
 				</BrowserRouter>
 			</div>

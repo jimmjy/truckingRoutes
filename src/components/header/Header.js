@@ -12,8 +12,8 @@ const Header = () => {
 			<Link to="/current" className="item">
 				Current Driver
 			</Link>
-			<Link to="/" className="item">
-				Add Driver
+			<Link to="/edit" className="item">
+				Edit Driver
 			</Link>
 		</div>
 	);

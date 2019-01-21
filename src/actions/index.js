@@ -23,3 +23,20 @@ export const fetchDriver = () => {
 		dispatch({ type: 'FETCH_DRIVER', payload: response.data });
 	};
 };
+
+export const editDriver = () => {
+	return async (dispatch, getState) => {
+		const response = await apiRequest.put('/driver', {
+			method: 'PUT',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				leg: '45',
+				progress: '45',
+			}),
+		});
+		dispatch({ type: 'EDIT_DRIVER', payload: response.data });
+	};
+};

@@ -21,4 +21,18 @@ router.get('/bonus', (req, res) => {
 	res.status(200).send(data.bonusDriver);
 });
 
+router.put('/driver', (req, res) => {
+	const driver = data.driverLocation;
+	console.log(req.body.body);
+	driver[0].activeLegID = req.body.leg;
+	driver[0].legProgress = req.body.progress;
+	// if (!course) {
+	// 	// 404 - resource not found
+	// 	res.status(404).send('not found');
+	// 	return;
+	// }
+	console.log(driver);
+	res.send(driver);
+});
+
 module.exports = router;
