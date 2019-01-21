@@ -1,23 +1,42 @@
 import React, { Component } from 'react';
 import StopVisualization from '../stops visualization/StopVisualization';
 import { connect } from 'react-redux';
-import { fetchLegs, fetchStops, fetchDriver } from '../../actions';
 
 import './CurrentDriver.scss';
 
 class CurrentDriver extends Component {
-	componentDidMount() {
-		this.props.fetchDriver();
-		this.props.fetchStops();
-		this.props.fetchLegs();
-		//establish realtime connection
-	}
+	state = {
+		isClicked: false,
+		stopCopy: [],
+	};
+
+	findLegHandler = () => {
+		this.setState({ isClicked: !this.state.isClicked });
+		//create of copy of data to mutate
+		const legCopy = [...this.props.legs];
+		const stopCopy = [...this.props.stops];
+
+		//find endpoint of current leg
+		const currentLeg = legCopy.find(leg => {
+			return leg.legID === this.props.driver[0].activeLegID;
+		});
+
+		//get index of end stop to splice stopcopy to map out route dynamically
+		const index = stopCopy.findIndex(stop => {
+			return stop.name === currentLeg.endStop;
+		});
+
+		stopCopy.splice(index);
+
+		this.setState({ stopCopy });
+	};
 
 	render() {
 		return (
 			<div>
 				<div className="ui segment">
 					<h1 className="legs-title">Driver Status</h1>
+					<button onClick={this.findLegHandler}>Active Route</button>
 					<div className="data-container">
 						<svg
 							viewBox="0 0 200 200"
@@ -34,7 +53,11 @@ class CurrentDriver extends Component {
 							</text>
 							<line stroke="blue" x1="80" x2="200" y1="100" y2="100" strokeWidth="5" />
 						</svg>
-						<StopVisualization driver={this.props.driver} stops={this.props.stops} legs={this.props.legs} />
+						<StopVisualization
+							stops={this.props.stops}
+							renderActive={this.state.isClicked}
+							activeRoute={this.state.stopCopy}
+						/>
 					</div>
 				</div>
 			</div>
@@ -48,7 +71,4 @@ const mapStateToProps = state => ({
 	driver: state.driver,
 });
 
-export default connect(
-	mapStateToProps,
-	{ fetchLegs, fetchStops, fetchDriver },
-)(CurrentDriver);
+export default connect(mapStateToProps)(CurrentDriver);

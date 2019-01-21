@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import StopVisualization from '../stops visualization/StopVisualization';
 import { connect } from 'react-redux';
-import { fetchLegs, fetchStops } from '../../actions';
 
 import './Routes.scss';
 
 class Routes extends Component {
-	componentDidMount() {
-		this.props.fetchLegs();
-		this.props.fetchStops();
-	}
-
 	render() {
 		const card = this.props.legs.map(leg => {
 			return (
@@ -24,6 +18,7 @@ class Routes extends Component {
 				</div>
 			);
 		});
+
 		return (
 			<div>
 				<div className="ui segment">
@@ -44,7 +39,4 @@ const mapStateToProps = state => ({
 	stops: state.stops,
 });
 
-export default connect(
-	mapStateToProps,
-	{ fetchLegs, fetchStops },
-)(Routes);
+export default connect(mapStateToProps)(Routes);
