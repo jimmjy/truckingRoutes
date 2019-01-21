@@ -23,16 +23,16 @@ router.get('/bonus', (req, res) => {
 
 router.put('/driver', (req, res) => {
 	const driver = data.driverLocation;
-	console.log(req.body.body);
-	driver[0].activeLegID = req.body.leg;
-	driver[0].legProgress = req.body.progress;
+	console.log();
+	driver[0].activeLegID = JSON.parse(req.body.body).leg;
+	driver[0].legProgress = JSON.parse(req.body.body).progress;
 	// if (!driver) {
 	// 	// 404 - resource not found
 	// 	res.status(404).send('not found');
 	// 	return;
 	// }
 	console.log(driver);
-	res.send(driver);
+	res.send(data.driver);
 });
 
 module.exports = router;

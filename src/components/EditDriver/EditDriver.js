@@ -9,8 +9,7 @@ class AddDriver extends Component {
 
 	onsubmitHandler = e => {
 		e.preventDefault();
-		console.log(e.target.elements[0].value);
-		this.props.editDriver(12);
+		this.props.editDriver(e.target.elements[0].value, e.target.elements[1].value);
 	};
 	listenInputHandler = e => {
 		e.preventDefault();

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StopVisualization from '../stops visualization/StopVisualization';
 import { connect } from 'react-redux';
+import { fetchDriver } from '../../actions/index';
 
 import './CurrentDriver.scss';
 
@@ -9,6 +10,10 @@ class CurrentDriver extends Component {
 		isClicked: false,
 		stopCopy: [],
 	};
+
+	componentDidMount() {
+		this.props.fetchDriver();
+	}
 
 	findLegHandler = () => {
 		this.setState({ isClicked: !this.state.isClicked });
@@ -71,4 +76,7 @@ const mapStateToProps = state => ({
 	driver: state.driver,
 });
 
-export default connect(mapStateToProps)(CurrentDriver);
+export default connect(
+	mapStateToProps,
+	{ fetchDriver },
+)(CurrentDriver);

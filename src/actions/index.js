@@ -35,7 +35,7 @@ export const editDriver = (leg, progress) => {
 			},
 			body: JSON.stringify({
 				leg: leg,
-				progress: '45',
+				progress: progress,
 			}),
 		});
 		dispatch({ type: 'EDIT_DRIVER', payload: response.data });
