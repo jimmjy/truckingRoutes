@@ -16,7 +16,9 @@ class CurrentDriver extends Component {
 	}
 
 	findLegHandler = () => {
+		//allows toggle of data
 		this.setState({ isClicked: !this.state.isClicked });
+
 		//create of copy of data to mutate
 		const legCopy = [...this.props.legs];
 		const stopCopy = [...this.props.stops];

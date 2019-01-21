@@ -24,7 +24,7 @@ export const fetchDriver = () => {
 	};
 };
 
-export const editDriver = (leg, progress) => {
+export const editDriver = (progress, leg) => {
 	return async (dispatch, getState) => {
 		console.log(leg, progress);
 		const response = await apiRequest.put('/driver', {
