@@ -7,17 +7,23 @@ class AddDriver extends Component {
 		data: [],
 	};
 
+	onsubmitHandler = e => {
+		e.preventDefault();
+		console.log(e.target.elements[0].value);
+		this.props.editDriver(12);
+	};
 	listenInputHandler = e => {
+		e.preventDefault();
 		const name = e.target.value;
-		console.log(name);
+		console.log(e.target.name);
 	};
 	render() {
 		return (
 			<div className="ui segment">
-				<form onSubmit={e => this.props.editDriver()}>
+				<form onSubmit={e => this.onsubmitHandler(e)}>
 					<label htmlFor="percent">percent progress</label>
 					<input type="text" name="progress" onChange={this.listenInputHandler} />
-					<input type="text" name="leg" />
+					<input type="text" name="leg" onChange={this.listenInputHandler} />
 					<button>click</button>
 				</form>
 			</div>

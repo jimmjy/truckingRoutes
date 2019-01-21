@@ -24,8 +24,9 @@ export const fetchDriver = () => {
 	};
 };
 
-export const editDriver = () => {
+export const editDriver = (leg, progress) => {
 	return async (dispatch, getState) => {
+		console.log(leg, progress);
 		const response = await apiRequest.put('/driver', {
 			method: 'PUT',
 			headers: {
@@ -33,7 +34,7 @@ export const editDriver = () => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				leg: '45',
+				leg: leg,
 				progress: '45',
 			}),
 		});

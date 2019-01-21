@@ -26,7 +26,7 @@ router.put('/driver', (req, res) => {
 	console.log(req.body.body);
 	driver[0].activeLegID = req.body.leg;
 	driver[0].legProgress = req.body.progress;
-	// if (!course) {
+	// if (!driver) {
 	// 	// 404 - resource not found
 	// 	res.status(404).send('not found');
 	// 	return;
